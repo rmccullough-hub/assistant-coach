@@ -1,0 +1,112 @@
+{% extends 'news/navbar.html' %}
+
+{% block content %}
+{% load static %}
+<!DOCTYPE html>
+<html>
+<head>
+	<title></title>
+	<style type="text/css">
+		h2{
+			text-align:center;
+		}
+		p {
+			text-align:center;
+		}
+		body {
+			/* The image used */
+			background-image: url("{% static 'images/background.png'%}");
+
+
+			/* Center and scale the image nicely */
+			background-position: center;
+			background-repeat: no-repeat;
+			background-size: 100% 100%;
+		}
+		.box{
+			padding-left:250px;
+			padding-right:250px;
+		}
+		.white{
+			background-color: white;
+		}
+	</style>
+</head>
+<body>
+	<br><br>
+	<div class="jumbotron white">
+		<h2>See where your players are ranked this week.</h2>
+	</div>
+	<div class="row">
+		<div class="col">
+			<div class="container">
+				<div class="jumbotron white">
+					<h2>Preseason Rankings</h2>
+					{% for i in names.items %}
+						{% if forloop.counter == 1 %}
+							<h6 class="tier1-header">Tier 1</h6>
+							<hr class="tier1">
+						{% endif %}
+						{% if forloop.counter == 10 %}
+							<h6>Tier 2</h6>
+							<hr>
+						{% endif %}
+						{% if forloop.counter == 25 %}
+							<h6>Tier 3</h6>
+							<hr>
+						{% endif %}
+						{% if forloop.counter == 50 %}
+							<h6>Tier 4</h6>
+							<hr>
+						{% endif %}
+						<p>{{forloop.counter}}. {{i.0}}, {{i.1.0}} {{i.1.1}}</p>
+					{% endfor %}
+				
+				</div>
+			</div>
+		</div>
+		<div class="col">
+			<div class="container">
+				<div class="jumbotron">
+					<h2>This Week's Rankings</h2>
+					{% for plr in projections %}
+						{% if forloop.counter == 1 %}
+							<h6 class="invisible">Tier 1</h6>
+							<hr class="tier1">
+						{% endif %}
+						{% if forloop.counter == 10 %}
+							<h6 class="invisible">Tier 2</h6>
+							<hr>
+						{% endif %}
+						{% if forloop.counter == 25 %}
+							<h6 class="invisible">Tier 3</h6>
+							<hr>
+						{% endif %}
+						{% if forloop.counter == 50 %}
+							<h6 class="invisible">Tier 4</h6>
+							<hr>
+						{% endif %}
+						<p>{{forloop.counter}}. {{plr.0}}: {{plr.1}}</p>
+					{% endfor %}
+				</div>
+			</div>
+			
+		</div>
+	</div>
+
+	<div class="box">
+		<div class="card">
+		  <div class="card-header">
+		    Creator
+		  </div>
+		  <div class="card-body">
+		    <h5 class="card-title">Ryan McCullough</h5>
+		    <p class="card-text">Check out my portfolio website to see more of my work.</p>
+		    <a href="#" class="btn btn-primary">Portfolio</a>
+		  </div>
+		</div>
+	</div>
+
+</body>
+</html>
+{% endblock %}

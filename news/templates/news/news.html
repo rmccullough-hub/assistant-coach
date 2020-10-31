@@ -1,0 +1,318 @@
+<!DOCTYPE html>
+<html>
+<head>
+	{% extends 'news/navbar.html'%}
+	{% block content %}
+	{% load static %}
+	<meta name="viewport" content="width=device-width, initial-scale=1">
+	<title></title>
+	<style type="text/css">
+		.pic{
+			height:125px;
+			padding-top:10px;
+			padding-bottom:5px;
+		}
+		.box{
+			padding-left:200px;
+			padding-right:200px;
+		}
+		.about-box{
+			display:flex;
+			align-items: center;
+  			justify-content: center;
+
+		}
+		.about{
+			width:450px;
+		}
+		h3{
+			text-align:center;
+		}
+		p{
+			text-align:center;
+		}
+		body {
+		  /* The image used */
+		  background-image: url("static/images/background.png");
+
+
+		  /* Center and scale the image nicely */
+		  background-position: center;
+		  background-repeat: no-repeat;
+		  background-size: 100% 100%;
+		}
+		.black{
+			border-top: 1px solid black;
+		}
+		.white{
+			background-color: white;
+		}
+		.news-card{
+			display:flex;
+			align-items: center;
+  			justify-content: center;
+  			width:300px;
+		}
+		h2{
+			text-align: center;
+		}
+		.card-center{
+			display:flex;
+			align-items: center;
+  			justify-content: center;
+
+		}
+	</style>
+</head>
+<body>
+<div>
+	<br>
+	<div class="jumbotron white">
+		<h3>About Us</h3>
+		<div class="about-box">
+			<div class="about">
+				<p>We use the power of artificial intelligece to improve your fantasy scores. Want to stay up to date on the most important news? We have you covered, with articles from some of the best in fantasy football. Want advice on who to start this week? The AI gods have answers. The best part is it is all free.</p>
+			</div>
+		</div>
+	</div>
+</div>
+<div class="container container-fluid">
+	<div class="card">
+		<div class="card-header">
+			<h2 class="news-section">This Week's Top Stories</h2>
+		</div>
+		<div class="card-body card-center">
+			<form action="" method="POST">
+				{% csrf_token %}
+				{{form.player_or_team}}
+				{% for field in form.news_source %}
+					{{field}}
+				{% endfor %}
+				<input type="submit" name="">
+			</form>
+			{% if failed_search %}
+				<h4>We could not find the results you were looking for</h4>
+			{% endif %}
+		</div>
+		
+	</div>
+	<br>
+	<div class="row">
+		{% if news_list.0 %}
+			<div class="col-md-4 col-sm-12">
+				<div class="card news-card">
+					<a href="{{news_list.0.1}}" target="_blank" rel="noopener noreferrer"><img class="pic" src="{{news_list.0.2}}" alt="NFL Player"></a>
+					<div class="card-footer">
+						<h6><a href="{{news_list.0.1}}" target="_blank" rel="noopener noreferrer">{{news_list.0.0}}</a></h6>
+					</div>
+				</div>
+			</div>
+		{% endif %}
+		{% if news_list.1 %}
+			<div class="col-md-4 col-sm-12">
+					<div class="card news-card">
+						<a href="{{news_list.1.1}}" target="_blank" rel="noopener noreferrer"><img class="pic" src="{{news_list.1.2}}" alt="NFL Player"></a>
+					<div class="card-footer">
+						<h6><a href="{{news_list.1.1}}" target="_blank" rel="noopener noreferrer">{{news_list.1.0}}</a> </h6>
+					</div>
+				</div>
+			</div>
+		<br>
+		{% endif %}
+		{% if news_list.2 %}
+		<div class="col-md-4 col-sm-12">
+			<div class="card news-card">
+				<a href="{{news_list.2.1}}" target="_blank" rel="noopener noreferrer"><img class="pic" src="{{news_list.2.2}}" alt="NFL Player"></a>
+				<div class="card-footer">
+					<h6><a href="{{news_list.2.1}}" target="_blank" rel="noopener noreferrer">{{news_list.2.0}}</a></h6>
+				</div>
+			</div>
+		</div>
+		{% endif %}
+	</div>
+	<br>
+	<div class="row">
+		{% if news_list.3 %}
+			<div class="col-md-4 col-sm-12">
+				<div class="card news-card">
+					<a href="{{news_list.3.1}}" target="_blank" rel="noopener noreferrer"><img class="pic" src="{{news_list.3.2}}" alt="NFL Player"></a>
+					<div class="card-footer">
+						<h6><a href="{{news_list.3.1}}" target="_blank" rel="noopener noreferrer">{{news_list.3.0}}</a></h6>
+					</div>
+				</div>
+			</div>
+		{% endif %}
+
+		{% if news_list.4 %}
+		<div class="col-md-4 col-sm-12">
+				<div class="card news-card">
+					<a href="{{news_list.4.1}}" target="_blank" rel="noopener noreferrer"><img class="pic" src="{{news_list.4.2}}" alt="NFL Player"></a>
+					<div class="card-footer">
+						<h6><a href="{{news_list.4.1}}" target="_blank" rel="noopener noreferrer">{{news_list.4.0}}</a></h6>
+					</div>
+				</div>
+			</div>
+		{% endif %}
+		{% if news_list.5 %}
+			<div class="col-md-4 col-sm-12">
+				<div class="card news-card">
+					<a href="{{news_list.5.1}}" target="_blank" rel="noopener noreferrer"><img class="pic" src="{{news_list.5.2}}" alt="NFL Player"></a>
+					<div class="card-footer">
+						<h6><a href="{{news_list.5.1}}" target="_blank" rel="noopener noreferrer">{{news_list.5.0}}</a></h6>
+					</div>
+				</div>
+			</div>
+		{% endif %}
+	</div>
+	<br>
+	<div class="row">
+		{% if news_list.6 %}
+			<div class="col-md-4 col-sm-12">
+				<div class="card news-card">
+					<a href="{{news_list.6.1}}" target="_blank" rel="noopener noreferrer"><img class="pic" src="{{news_list.6.2}}" alt="NFL Player"></a>
+					<div class="card-footer">
+						<h6><a href="{{news_list.6.1}}" target="_blank" rel="noopener noreferrer">{{news_list.6.0}}</a></h6>
+					</div>
+				</div>
+			</div>
+		{% endif %}
+		{% if news_list.7 %}
+			<div class="col-md-4 col-sm-12">
+				<div class="card news-card">
+					<a href="{{news_list.7.1}}" target="_blank" rel="noopener noreferrer"><img class="pic" src="{{news_list.7.2}}" alt="NFL Player"></a>
+					<div class="card-footer">
+						<h6><a href="{{news_list.7.1}}" target="_blank" rel="noopener noreferrer">{{news_list.7.0}}</a></h6>
+					</div>
+				</div>
+			</div>
+		{% endif %}
+		{% if news_list.8 %}
+			<div class="col-md-4 col-sm-12">
+				<div class="card news-card">
+					<a href="{{news_list.8.1}}" target="_blank" rel="noopener noreferrer"><img class="pic" src="{{news_list.8.2}}" alt="NFL Player"></a>
+					<div class="card-footer">
+						<h6><a href="{{news_list.8.1}}" target="_blank" rel="noopener noreferrer">{{news_list.8.0}}</a></h6>
+					</div>
+				</div>
+			</div>
+		{% endif %}
+	</div>
+	<br>
+	<div class="row">
+		{% if yahoo_news.0 %}
+			<div class="col-md-4 col-sm-12">
+				<div class="card news-card">
+					<a href="{{yahoo_news.0.1}}" target="_blank" rel="noopener noreferrer"><img class="pic" src="{% static 'images/yahoo_logo.jpg' %}" alt="NFL Player"></a>
+					<div class="card-footer">
+						<h6><a href="{{yahoo_news.0.1}}" target="_blank" rel="noopener noreferrer">{{yahoo_news.0.0}}</a></h6>
+					</div>
+				</div>
+			</div>
+		{% endif %}
+		{% if yahoo_news.1 %}
+			<div class="col-md-4 col-sm-12">
+				<div class="card news-card">
+					<a href="{{yahoo_news.1.1}}" target="_blank" rel="noopener noreferrer"><img class="pic" src="{% static 'images/yahoo_logo.jpg' %}" alt="NFL Player"></a>
+					<div class="card-footer">
+						<h6><a href="{{yahoo_news.1.1}}" target="_blank" rel="noopener noreferrer">{{yahoo_news.1.0}}</a></h6>
+					</div>
+				</div>
+			</div>
+		{% endif %}
+		{% if yahoo_news.2 %}
+			<div class="col-md-4 col-sm-12">
+				<div class="card news-card">
+					<a href="{{yahoo_news.2.1}}" target="_blank" rel="noopener noreferrer"><img class="pic" src="{% static 'images/yahoo_logo.jpg' %}" alt="NFL Player"></a>
+					<div class="card-footer">
+						<h6><a href="{{yahoo_news.2.1}}" target="_blank" rel="noopener noreferrer">{{yahoo_news.2.0}}</a></h6>
+					</div>
+				</div>
+			</div>
+		{% endif %}
+	</div>
+	<br>
+	<div class="row">
+		{% if yahoo_news.3 %}
+			<div class="col-md-4 col-sm-12">
+				<div class="card news-card">
+					<a href="{{yahoo_news.3.1}}" target="_blank" rel="noopener noreferrer"><img class="pic" src="{% static 'images/yahoo_logo.jpg' %}" alt="NFL Player"></a>
+					<div class="card-footer">
+						<h6><a href="{{yahoo_news.3.1}}" target="_blank" rel="noopener noreferrer">{{yahoo_news.3.0}}</a></h6>
+					</div>
+				</div>
+			</div>
+		{% endif %}
+		{% if yahoo_news.4 %}
+			<div class="col-md-4 col-sm-12">
+				<div class="card news-card">
+					<a href="{{yahoo_news.4.1}}" target="_blank" rel="noopener noreferrer"><img class="pic" src="{% static 'images/yahoo_logo.jpg' %}" alt="NFL Player"></a>
+					<div class="card-footer">
+						<h6><a href="{{yahoo_news.4.1}}" target="_blank" rel="noopener noreferrer">{{yahoo_news.4.0}}</a></h6>
+					</div>
+				</div>
+			</div>
+	{% endif %}
+	{% if yahoo_news.5 %}
+		<div class="col-md-4 col-sm-12">
+			<div class="card news-card">
+				<a href="{{yahoo_news.5.1}}" target="_blank" rel="noopener noreferrer"><img class="pic" src="{% static 'images/yahoo_logo.jpg' %}" alt="NFL Player"></a>
+				<div class="card-footer">
+					<h6><a href="{{yahoo_news.5.1}}" target="_blank" rel="noopener noreferrer">{{yahoo_news.5.0}}</a></h6>
+				</div>
+			</div>
+		</div>
+		{% endif %}
+	</div>
+	<br>
+	<div class="row">
+		{% if espn_news.0 %}
+			<div class="col-md-4 col-sm-12">
+				<div class="card news-card">
+					<a href="{{espn_news.0.1}}" target="_blank" rel="noopener noreferrer"><img class="pic" src="{% static 'images/espn_logo.png' %}" alt="NFL Player"></a>
+					<div class="card-footer">
+						<h6><a href="{{espn_news.0.1}}" target="_blank" rel="noopener noreferrer">{{espn_news.0.0}}</a></h6>
+					</div>
+				</div>
+			</div>
+		{% endif %}
+		{% if espn_news.1 %}
+			<div class="col-md-4 col-sm-12">
+				<div class="card news-card">
+					<a href="{{espn_news.1.1}}" target="_blank" rel="noopener noreferrer"><img class="pic" src="{% static 'images/espn_logo.png' %}" alt="NFL Player"></a>
+					<div class="card-footer">
+						<h6><a href="{{espn_news.1.1}}" target="_blank" rel="noopener noreferrer">{{espn_news.1.0}}</a></h6>
+					</div>
+				</div>
+			</div>
+		{% endif %}
+		{% if espn_news.2 %}
+			<div class="col-md-4 col-sm-12">
+				<div class="card news-card">
+					<a href="{{espn_news.2.1}}" target="_blank" rel="noopener noreferrer"><img class="pic" src="{% static 'images/espn_logo.png' %}" alt="NFL Player"></a>
+					<div class="card-footer">
+						<h6><a href="{{espn_news.2.1}}" target="_blank" rel="noopener noreferrer">{{espn_news.2.0}}</a></h6>
+					</div>
+				</div>
+			</div>
+		{% endif %}
+	</div>
+	<br>
+</div>
+<div class="box">
+	<div class="card">
+	  <div class="card-header">
+	    Creator
+	  </div>
+	  <div class="card-body">
+	    <h5 class="card-title">Ryan McCullough</h5>
+	    <p class="card-text">Check out my portfolio website to see more of my work.</p>
+	    <a href="#" class="btn btn-primary">Portfolio</a>
+	  </div>
+	</div>
+</div>
+</body>
+<script src="https://code.jquery.com/jquery-3.5.1.slim.min.js" integrity="sha384-DfXdz2htPH0lsSSs5nCTpuj/zy4C+OGpamoFVy38MVBnE+IbbVYUew+OrCXaRkfj" crossorigin="anonymous"></script>
+<script src="https://cdn.jsdelivr.net/npm/popper.js@1.16.1/dist/umd/popper.min.js" integrity="sha384-9/reFTGAW83EW2RDu2S0VKaIzap3H66lZH81PoYlFhbGU+6BZp6G7niu735Sk7lN" crossorigin="anonymous"></script>
+<script src="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/js/bootstrap.min.js" integrity="sha384-B4gt1jrGC7Jh4AgTPSdUtOBvfO8shuf57BaghqFfPlYxofvL8/KUEfYiJOMMV+rV" crossorigin="anonymous"></script>
+</html>
+{% endblock %}
