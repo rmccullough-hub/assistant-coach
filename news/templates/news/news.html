@@ -41,6 +41,23 @@
 		  background-repeat: no-repeat;
 		  background-size: 100% 100%;
 		}
+
+
+		ul{
+			list-style: none;
+			position: absolute;
+			justify-content: center;
+			align-items:center; 
+		}
+
+		li {
+			float:left;
+			padding: 8px;
+		}
+
+		a {
+			text-align: center;
+		}
 		.black{
 			border-top: 1px solid black;
 		}
@@ -94,9 +111,28 @@
 				<h4>We could not find the results you were looking for</h4>
 			{% endif %}
 		</div>
+
+		<ul>
+			<li><a href="{% url 'news' %}">1</a></li>
+			<li><a href="{% url 'archive' id=2 %}">2</a></li>
+			<li><a href="{% url 'archive' id=3 %}">3</a></li>
+			<li><a href="{% url 'archive' id=4 %}">4</a></li>
+			<li><a href="{% url 'archive' id=5 %}">5</a></li>
+		</ul>
 		
 	</div>
 	<br>
+
+	{% for article in articles %}
+		<div class="col-md-4 col-sm-12">
+				<div class="card news-card">
+					<a href="{{article.2.1}}" target="_blank" rel="noopener noreferrer"><img class="pic" src="{% static 'images/espn_logo.png' %}" alt="NFL Player"></a>
+					<div class="card-footer">
+						<h6><a href="{{article.2.1}}" target="_blank" rel="noopener noreferrer">{{article.2.0}}</a></h6>
+					</div>
+				</div>
+			</div>
+	{% endfor %}
 	<div class="row">
 		{% if news_list.0 %}
 			<div class="col-md-4 col-sm-12">

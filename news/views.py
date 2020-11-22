@@ -1,26 +1,111 @@
 from django.shortcuts import render, redirect
 from django.http import HttpResponse
 
-from .webscrape import news, yahoo_news, espn_news, search_player
+from .webscrape import get_fantasy, get_yahoo, get_espn, search_player
 from .forms import FilterForm, PredictionForm
 from .predictions import predictions 
 from .names import names
-from .models import Player
+from .models import Player, Article
 import datetime
 
 
 # the following functions determine what gets rendered on different pages of the website.
 
-# the home page contains news articles webscraped from several fantasy football websites and a form to filter these results.
-def news_page(request):
+def update_page(request):
+	fantasy_pros = get_fantasy()
+	# yahoo = get_yahoo()
+	# espn = get_espn()
 
-	news_list = []
-	for (k,v) in news.items():
-		news_list.append([k,v[0],v[1]])
+	Article.objects.all().delete()
+	if len(Article.objects.all()) < 90:
+		for story in get_yahoo():
+			article = Article(title=story[0], url=story[1], image_path='static', source="yahoo")
+			article.save()
+
+		for story in get_espn():
+			article = Article(title=story[0], url=story[1], image_path='static', source="espn")
+			article.save()
+
+		for story in fantasy_pros.keys():
+			article = Article(title=story, url=fantasy_pros[story][0], image_path=fantasy_pros[story][1], source="fantasy" )
+			article.save()
+
+	return HttpResponse('<h1>Database updated</h1>')
+
+
+# the home page contains news articles webscraped from several fantasy football websites and a form to filter these results.
+def news_page(request, id=1):
+	context = {}
+
+	print(id)
+	news_list = [[article.title, article.url, article.image_path] for article in list(Article.objects.filter(source='fantasy'))]
+
+	yahoo_news = [[article.title, article.url] for article in list(Article.objects.filter(source='yahoo'))]
+
+	espn_news = [[article.title, article.url] for article in list(Article.objects.filter(source='espn'))]
 
 	form = FilterForm()
 	
+	num_of_articles = len(news_list) + len(yahoo_news) + len(espn_news)
+
+	fantasy_ind = len(news_list)
+
+	yahoo_ind = len(yahoo_news) 
+
+	espn_ind = len(espn_news)
+
+	print(len(Article.objects.all()))
+	print(news_list)
+	if id == 1 and num_of_articles <= 18:
+		news_list = news_list[0:9]
+		yahoo_news = yahoo_news[0:6]
+		espn_news = espn_news[0:2]
+
+	if id == 2 and num_of_articles > 18 and num_of_articles <= 36:
+		news_list = news_list[20:fantasy_ind]
+		if yahoo_ind >= 5:
+			yahoo_news = yahoo_news[6:yahoo_ind]
+		if espn_ind >= 2:
+			espn_news = espn_news[4:espn_ind]
+	elif id == 2 and num_of_articles <= 18:
+		yahoo_news = []
+		espn_news = []
+		news_list = []
+
+	if id == 3 and num_of_articles > 36 and num_of_articles <= 54:
+		news_list = news_list[17:fantasy_ind]
+		if yahoo_ind >= 11:
+			yahoo_news = yahoo_news[11:yahoo_ind]
+		if espn_ind >= 5:
+			espn_news = espn_news[5:espn_ind]
+	elif id == 3 and num_of_articles <= 36:
+		yahoo_news = []
+		espn_news = []
+		news_list = []
+
+	if id == 4 and num_of_articles > 54 and num_of_articles <= 72:
+		news_list = news_list[26:fantasy_ind]
+		if yahoo_ind >= 17:
+			yahoo_news = yahoo_news[17:yahoo_ind]
+		if espn_ind >= 8:
+			espn_news = espn_news[8:espn_ind]
+	elif id == 4 and num_of_articles <= 54:
+		yahoo_news = []
+		espn_news = []
+		news_list = []
+
+	if id == 5 and num_of_articles > 72 and num_of_articles <= 90:
+		news_list = news_list[8:fantasy_ind]
+		if yahoo_ind >= 26:
+			yahoo_news = yahoo_news[26:yahoo_ind]
+		if espn_ind >= 11:
+			espn_news = espn_news[11:espn_ind]
+	elif id == 5 and num_of_articles <= 72:
+		yahoo_news = []
+		espn_news = []
+		news_list = []
 	# contains the all content to be rendered in html. 
+
 	context = {
 		'news_list':news_list[:],
 		'yahoo_news':yahoo_news[:],
