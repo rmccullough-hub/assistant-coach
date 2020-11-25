@@ -12,4 +12,4 @@ class Article(models.Model):
 	image_path = models.CharField(max_length=400)
 	title = models.CharField(max_length=400)
 	source = models.CharField(max_length=400)
-	date = models.DateTimeField(default=datetime.now())
+	date = models.CharField(max_length=200)

@@ -4,6 +4,9 @@ import os
 import pandas as pd
 import numpy as np
 from sklearn import linear_model
+from .models import Player
+from .names import names
+
 
 module_dir = os.path.dirname(__file__)
 
@@ -21,6 +24,5 @@ def predictions(avg, opponent_rank, file):
     reg.fit(df.drop('ftsp', axis='columns'), df.ftsp)
 
     return reg.predict([[avg, opponent_rank]])
-
 
 
