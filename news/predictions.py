@@ -15,7 +15,7 @@ module_dir = os.path.dirname(__file__)
 def predictions(avg, opponent_rank, file):
 
 	# the next two lines access a CSV file with the relevant data, given the position of the player.
-    file_path = os.path.join(module_dir, file)
+    file_path = os.path.join(module_dir,'data', file)
 
     df = pd.read_csv(open(file_path, 'r'))
 

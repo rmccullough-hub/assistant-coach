@@ -37,6 +37,8 @@ def update_database():
 # the following functions determine what gets rendered on different pages of the website.
 
 def update_page(request):
+
+	Article.objects.all().delete()
 	fantasy_pros = get_fantasy()
 	# yahoo = get_yahoo()
 	# espn = get_espn()
