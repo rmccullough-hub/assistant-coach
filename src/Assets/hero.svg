@@ -1,0 +1,16 @@
+<svg xmlns="http://www.w3.org/2000/svg" width="509.031" height="85.042" viewBox="0 0 509.031 85.042">
+  <g id="Group_11" data-name="Group 11" transform="translate(-1211 -330.708)">
+    <path id="Icon_ionic-ios-phone-portrait" data-name="Icon ionic-ios-phone-portrait" d="M48.49,2.25H16.749a6.42,6.42,0,0,0-6.624,6.234V80.679a6.6,6.6,0,0,0,6.624,6.461H48.47a6.456,6.456,0,0,0,6.464-6.461V8.484A6.25,6.25,0,0,0,48.49,2.25ZM29.538,6.608h6a.759.759,0,1,1,0,1.516h-6a.759.759,0,1,1,0-1.516Zm3.1,77.69A3.3,3.3,0,1,1,36.122,81,3.4,3.4,0,0,1,32.639,84.3Zm18.712-9.285H13.727a.391.391,0,0,1-.4-.379V12.293a.391.391,0,0,1,.4-.379H51.352a.391.391,0,0,1,.4.379V74.634A.391.391,0,0,1,51.352,75.013Z" transform="translate(1200.875 328.458)" fill="#fff"/>
+    <path id="Icon_awesome-database" data-name="Icon awesome-database" d="M54.65,12.149v7.593c0,6.691-12.239,12.149-27.325,12.149S0,26.433,0,19.742V12.149C0,5.457,12.239,0,27.325,0S54.65,5.457,54.65,12.149Zm0,17.084V46.317c0,6.691-12.239,12.149-27.325,12.149S0,53.009,0,46.317V29.233c5.871,5.5,16.615,8.068,27.325,8.068S48.779,34.738,54.65,29.233Zm0,26.576V72.893c0,6.691-12.239,12.149-27.325,12.149S0,79.584,0,72.893V55.809c5.871,5.5,16.615,8.068,27.325,8.068S48.779,61.314,54.65,55.809Z" transform="translate(1399 330.708)" fill="#fff"/>
+    <text id="W" transform="translate(1225 380)" fill="#00eb08" font-size="16" font-family="MicrosoftYaHei-Bold, Microsoft YaHei" font-weight="700"><tspan x="0" y="0">W</tspan></text>
+    <path id="Icon_ionic-ios-laptop" data-name="Icon ionic-ios-laptop" d="M130.28,83.32v-70.4a5.143,5.143,0,0,0-5.141-5.049H20.637A5.124,5.124,0,0,0,15.5,12.924v70.4H1.118c0,2.923,2.959,5.551,5.65,6.7a40.081,40.081,0,0,0,14.707,2.894H124.3a40.021,40.021,0,0,0,14.438-2.6c2.84-1.181,5.919-3.957,5.919-7H130.28ZM72.888,10.237a1.181,1.181,0,1,1-1.2,1.181A1.192,1.192,0,0,1,72.888,10.237ZM20.876,15.021H124.9a.6.6,0,0,1,.6.591V78a.6.6,0,0,1-.6.591H20.876a.6.6,0,0,1-.6-.591V15.611A.578.578,0,0,1,20.876,15.021ZM85.532,85.682H60.244a3.551,3.551,0,0,1-2.9-2.215H88.432A2.957,2.957,0,0,1,85.532,85.682Z" transform="translate(1575.373 322.833)" fill="#fff"/>
+    <g id="Icon_feather-arrow-left" data-name="Icon feather-arrow-left" transform="translate(1302.5 363.5)">
+      <path id="Path_14" data-name="Path 14" d="M28.5,18H7.5" fill="none" stroke="#fff" stroke-linecap="round" stroke-linejoin="round" stroke-width="3"/>
+      <path id="Path_15" data-name="Path 15" d="M18,28.5,7.5,18,18,7.5" fill="none" stroke="#fff" stroke-linecap="round" stroke-linejoin="round" stroke-width="3"/>
+    </g>
+    <g id="Icon_feather-arrow-left-2" data-name="Icon feather-arrow-left" transform="translate(1514.5 365.5)">
+      <path id="Path_14-2" data-name="Path 14" d="M28.5,18H7.5" fill="none" stroke="#fff" stroke-linecap="round" stroke-linejoin="round" stroke-width="3"/>
+      <path id="Path_15-2" data-name="Path 15" d="M18,28.5,7.5,18,18,7.5" fill="none" stroke="#fff" stroke-linecap="round" stroke-linejoin="round" stroke-width="3"/>
+    </g>
+  </g>
+</svg>
